@@ -1,1 +1,1 @@
-web: gunicorn weather_currency:app
+web: gunicorn app_weather_currency:app
