@@ -1,0 +1,1 @@
+web: python app_weather_currency.py runserver 0.0.0.0:5000
