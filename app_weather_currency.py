@@ -9,6 +9,9 @@ import time
 #import url_for
 from flask import request
 from flask import make_response
+import sys
+import logging
+
 
 def get_weather(city):
     
@@ -28,6 +31,8 @@ def get_weather(city):
     
     
 app = Flask(__name__)
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 @app.route('/')
 def index():
     searchcity = request.args.get("searchcity")
@@ -62,6 +67,6 @@ def index():
 
 if __name__ == '__main__':
     
-    port = int(os.environ.get('PORT', 33507))
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
     
