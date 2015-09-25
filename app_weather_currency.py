@@ -3,7 +3,6 @@ from flask import render_template
 import os
 import json
 import datetime
-import urllib
 import urllib.request
 import io
 import time
@@ -14,18 +13,15 @@ import sys
 import logging
 
 
+
+
 def get_weather(city):
     
     url = "http://api.openweathermap.org/data/2.5/forecast/daily?q={}&count=10&units=metric&mode=json&APPID=19c3424674144fdcbe5d0b597900a246".format("".join(city.split()))
-    #url = "http://api.openweathermap.org/data/2.5/forecast/daily?q={}&count=10&units=metric&mode=json".format(city)
-    #try:
     webdata = urllib.request.urlopen(url)
 
     
-    #except urllib.error.HTTPError as e:
-    #    print('status', e.code)
-    #    print('reason', e.reason) 
-         
+           
     textdata = io.TextIOWrapper(webdata,encoding='utf-8')
     response_weather = textdata.read()
     return response_weather
